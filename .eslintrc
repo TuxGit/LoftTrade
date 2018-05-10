@@ -1,0 +1,8 @@
+{
+  "extends": ["react-app", "standard"],
+  "rules": {
+    "no-extra-semi": "error",
+    "semi": ["error", "always"],
+    "no-unused-vars": "warn"
+  }
+}
