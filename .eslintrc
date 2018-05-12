@@ -3,6 +3,7 @@
   "rules": {
     "no-extra-semi": "error",
     "semi": ["error", "always"],
-    "no-unused-vars": "warn"
+    "no-unused-vars": "warn",
+    "generator-star-spacing": ["error", {"before": false, "after": true}]
   }
 }

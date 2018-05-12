@@ -9,6 +9,10 @@
 # production
 /build
 
+# editors
+.vscode
+.idea
+
 # misc
 /tmp
 .DS_Store
