@@ -3,10 +3,11 @@ import { connect } from 'react-redux';
 
 import Header from '../Header';
 import Footer from '../Footer';
-import Main from '../Main';
+import Main from './Main';
 import { fetchRequest as fetchUserRequest, getIsFetching, getData } from '../../ducks/user';
 import { fetchRequest as fetchWalletRequest } from '../../ducks/wallet';
-import { getBtcLatest, getEthLatest } from '../../ducks/currency';
+import { getBtcLatest, getEthLatest, selectBtc, selectEth } from '../../ducks/currency';
+import { fetchRequest as fetchTransactionsRequest } from '../../ducks/transactions';
 
 export class TradePage extends PureComponent {
   // componentDidMount () {
@@ -32,8 +33,13 @@ export class TradePage extends PureComponent {
   //   }
   // }
   componentDidMount () {
+    const routeMatch = this.props.match;
+    if (routeMatch && routeMatch.params.name === 'eth') {
+      this.props.selectEth();
+    }
     this.props.fetchUserRequest();
     this.props.fetchWalletRequest();
+    this.props.fetchTransactionsRequest();
   }
 
   render () {
@@ -58,5 +64,5 @@ export default connect(
     eth: getEthLatest(state)
     // isFetching: getIsFetching(state)
   }),
-  { fetchUserRequest, fetchWalletRequest }
+  { fetchUserRequest, fetchWalletRequest, selectBtc, selectEth, fetchTransactionsRequest }
 )(TradePage);
