@@ -5,13 +5,27 @@ const {
   wallet: {
     fetchRequest,
     fetchSuccess,
-    fetchFailure
+    fetchFailure,
+
+    buyCurrencyRequest,
+    buyCurrencySuccess,
+    buyCurrencyFailure,
+    sellCurrencyRequest,
+    sellCurrencySuccess,
+    sellCurrencyFailure
   }
 } = createActions({
   WALLET: {
     FETCH_REQUEST: null,
     FETCH_SUCCESS: null,
-    FETCH_FAILURE: null
+    FETCH_FAILURE: null,
+
+    BUY_CURRENCY_REQUEST: null,
+    BUY_CURRENCY_SUCCESS: null,
+    BUY_CURRENCY_FAILURE: null,
+    SELL_CURRENCY_REQUEST: null,
+    SELL_CURRENCY_SUCCESS: null,
+    SELL_CURRENCY_FAILURE: null
   }
 });
 
@@ -32,7 +46,7 @@ const isFetching = handleActions(
   false
 );
 
-const error = handleActions(
+const error = handleActions( // fetchError
   {
     [fetchRequest]: () => null,
     [fetchSuccess]: () => null,
@@ -41,10 +55,22 @@ const error = handleActions(
   null
 );
 
+const exchangeError = handleActions(
+  {
+    [buyCurrencyRequest]: () => null,
+    [sellCurrencyRequest]: () => null,
+    [buyCurrencyFailure]: (state, action) => action.payload,
+    [sellCurrencyFailure]: (state, action) => action.payload
+  },
+  null
+);
+
 const coins = handleActions( // data
   {
     // [fetchRequest]: (state, action) => null,
-    [fetchSuccess]: (state, action) => action.payload
+    [fetchSuccess]: (state, action) => action.payload,
+    [buyCurrencySuccess]: (state, action) => action.payload,
+    [sellCurrencySuccess]: (state, action) => action.payload
   },
   null
 );
@@ -52,10 +78,16 @@ const coins = handleActions( // data
 export default combineReducers({
   isFetching,
   error,
+  exchangeError,
   coins
 });
 
-export { fetchRequest, fetchSuccess, fetchFailure };
+export {
+  fetchRequest, fetchSuccess, fetchFailure,
+  buyCurrencyRequest, buyCurrencySuccess, buyCurrencyFailure,
+  sellCurrencyRequest, sellCurrencySuccess, sellCurrencyFailure
+};
 
 export const getIsFetching = state => state.wallet.isFetching;
 export const getCoins = state => state.wallet.coins; // getData
+export const getExchangeError = state => state.wallet.exchangeError;

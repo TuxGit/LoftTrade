@@ -114,7 +114,7 @@ export {
 };
 
 export const getOffsetCurency = state => state.currency.offset;
-export const getSelectedCurency = state => state.currency.selected;
+export const getSelectedCurrency = state => state.currency.selected;
 export const getBtcData = state => state.currency.btc;
 export const getEthData = state => state.currency.eth;
 export const getIsBtcFetching = state => state.currency.isBtcFetching;
@@ -124,4 +124,18 @@ export const getBtcLatest = state => { // getBtcRate, getBtcCurrent
 };
 export const getEthLatest = state => {
   return (state.currency.eth.length > 0) ? state.currency.eth[0] : null;
+};
+
+export const getCurrentCurrencyData = state => {
+  const selected = state.currency.selected;
+  return state.currency[selected];
+};
+
+export const getCurrentCurrencyPurchase = state => {
+  const selected = state.currency.selected;
+  return (state.currency[selected].length > 0) ? state.currency[selected][0].purchase : null;
+};
+export const getCurrentCurrencySell = state => {
+  const selected = state.currency.selected;
+  return (state.currency[selected].length > 0) ? state.currency[selected][0].sell : null;
 };
