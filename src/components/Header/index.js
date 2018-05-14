@@ -2,6 +2,7 @@ import React, { PureComponent, Component } from 'react';
 import { connect } from 'react-redux';
 import { NavLink, withRouter } from 'react-router-dom';
 
+import { selectBtc, selectEth } from '../../ducks/currency';
 import LogoWhiteSvg from './Logo-white.svg';
 import { Container, Content, Logo, Menu, MenuItem, UserInfo } from './styles';
 
@@ -9,6 +10,16 @@ export class Header extends Component { // PureComponent -> нет реакци�
   // componentDidMount () {
   //   this.props.fetchUserRequest();
   // }
+
+  onClickNavLink = param => e => {
+    // console.log(this.props.selectEth(), selectEth());
+
+    if (param === 'btc') {
+      this.props.selectBtc();
+    } else if (param === 'eth') {
+      this.props.selectEth();
+    }
+  }
 
   render () {
     // console.log(this.props);
@@ -24,13 +35,13 @@ export class Header extends Component { // PureComponent -> нет реакци�
           <Logo src={LogoWhiteSvg} alt="Logo" />
           <Menu>
             <MenuItem>
-              <NavLink to="/trade/btc">
+              <NavLink to="/trade/btc" onClick={this.onClickNavLink('btc')} >
                 { btcContent }
                 <b>1 BTC</b>
               </NavLink>
             </MenuItem>
             <MenuItem>
-              <NavLink to="/trade/eth">
+              <NavLink to="/trade/eth" onClick={this.onClickNavLink('eth')}>
                 { ethContent }
                 <b>1 ETH</b>
               </NavLink>
@@ -45,12 +56,12 @@ export class Header extends Component { // PureComponent -> нет реакци�
   }
 }
 
-export default Header;
+// export default Header;
 // export default withRouter(Header);
-// export default connect(
-//   state => ({
-//     // isAuthorized: getIsAuthorized(state)
-//     user: null
-//   }),
-//   { logout }
-// )(Header);
+export default connect(
+  state => ({
+    // isAuthorized: getIsAuthorized(state)
+    // user: null
+  }),
+  { selectBtc, selectEth }
+)(Header);
