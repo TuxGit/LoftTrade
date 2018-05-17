@@ -21,7 +21,6 @@ class AppRouter extends Component {
           <PrivateRoute path="/trade/:name" component={TradePage} />
           <Route path="/login" component={LoginPage} />
         </Switch>
-        {/* <Particles /> */}
       </AppContainer>
     );
   }

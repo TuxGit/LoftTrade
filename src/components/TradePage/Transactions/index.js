@@ -8,7 +8,6 @@ import { Table, Tr, TrHead, Th, Td } from './styles';
 
 class Transactions extends PureComponent {
   render () {
-    // console.log(this.props);
     let { currency, records } = this.props;
 
     if (!records) return null;

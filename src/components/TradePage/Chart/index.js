@@ -21,10 +21,9 @@ class Chart extends PureComponent {
   }
 
   render () {
-    // console.log(this.props);
     const { data, offset } = this.props;
 
-    // if (!data) return null;
+    if (!data) return null;
 
     return (
       <article>

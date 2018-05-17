@@ -1,19 +1,13 @@
-import React, { PureComponent, Component } from 'react';
+import React, { PureComponent } from 'react';
 import { connect } from 'react-redux';
-import { NavLink, withRouter } from 'react-router-dom';
+import { NavLink } from 'react-router-dom'; // withRouter
 
 import { selectBtc, selectEth } from '../../ducks/currency';
 import LogoWhiteSvg from './Logo-white.svg';
 import { Container, Content, Logo, Menu, MenuItem, UserInfo } from './styles';
 
-export class Header extends Component { // PureComponent -> нет реакции на переходы по ссылкам меню
-  // componentDidMount () {
-  //   this.props.fetchUserRequest();
-  // }
-
+export class Header extends PureComponent { // PureComponent -> нет реакции на переходы по ссылкам меню (исправилось как то само)
   onClickNavLink = param => e => {
-    // console.log(this.props.selectEth(), selectEth());
-
     if (param === 'btc') {
       this.props.selectBtc();
     } else if (param === 'eth') {
@@ -22,7 +16,6 @@ export class Header extends Component { // PureComponent -> нет реакци�
   }
 
   render () {
-    // console.log(this.props);
     const { user, btc, eth } = this.props;
 
     const btcContent = btc ? btc.sell.toFixed(1) : 0;
@@ -56,12 +49,8 @@ export class Header extends Component { // PureComponent -> нет реакци�
   }
 }
 
-// export default Header;
 // export default withRouter(Header);
 export default connect(
-  state => ({
-    // isAuthorized: getIsAuthorized(state)
-    // user: null
-  }),
+  state => ({ }),
   { selectBtc, selectEth }
 )(Header);
