@@ -1,5 +1,4 @@
-import styled, { css } from 'styled-components';
-// https://codesandbox.io/s/52q597j2p
+import styled from 'styled-components';
 
 export const Container = styled.div`
   display: flex;

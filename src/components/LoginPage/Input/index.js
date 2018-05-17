@@ -1,5 +1,4 @@
 import React, { PureComponent } from 'react';
-// import styled from 'styled-components';
 
 import Styles from './styles';
 
@@ -9,7 +8,6 @@ class Input extends PureComponent {
 
     return (
       <Styles className="field" icon={icon}>
-        {/* <div className="field__wrapper"> */}
         <span className={'field__icon ' + icon} />
         <input
           className="field__input"
@@ -20,7 +18,6 @@ class Input extends PureComponent {
           onKeyPress={onKeyPress}
           onChange={onChange}
         />
-        {/* </div> */}
       </Styles>
     );
   }

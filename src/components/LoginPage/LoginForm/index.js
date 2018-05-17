@@ -20,13 +20,11 @@ class LoginForm extends PureComponent {
 
   onKeyPressHandler = (e) => {
     if (e.key === 'Enter') {
-      // this.props.submitForm(this.state);
       this.props.loginRequest(this.state);
     }
   }
 
   onClickHandler = () => {
-    // this.props.submitForm(this.state);
     this.props.loginRequest(this.state);
   }
 
@@ -62,7 +60,6 @@ class LoginForm extends PureComponent {
   }
 }
 
-// export default LoginForm;
 export default connect(
   state => ({
     error: getLoginError(state)

@@ -5,10 +5,8 @@ import Particles from 'react-particles-js';
 
 import particlesConfig from '../../particles-params';
 import { loginRequest, registrationRequest, getIsAuthorized } from '../../ducks/auth';
-// import Input from './Input';
 import LoginForm from './LoginForm';
 import RegisterForm from './RegisterForm';
-// import Styles from './styles';
 import LogoSvg from './logo.svg';
 import { Container, Content, Logo, FormWrapper, FormSwitcher } from './styles';
 
@@ -17,23 +15,9 @@ class LoginPage extends PureComponent {
     mode: 'login' // register
   }
 
-  // onChangeHandler = (e) => {
-  //   const field = e.target.name;
-  //   const value = e.target.value;
-
-  //   this.setState({ [field]: value });
-  // }
-
-  // onKeyPressHandler = (e) => {
-  //   if (e.key === 'Enter') {
-  //     this.props.loginRequest(this.state.authToken);
-  //   }
-  // }
-
   submitFormHandler = (params) => {
-    // console.log('submit', params);
-
     const { email, password } = params;
+
     // todo - validate params
 
     if (this.state.mode === 'login') {

@@ -62,7 +62,6 @@ class RegisterForm extends PureComponent {
   }
 }
 
-// export default RegisterForm;
 export default connect(
   state => ({
     error: getRegistrationError(state)
