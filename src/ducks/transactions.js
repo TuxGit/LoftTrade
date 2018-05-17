@@ -40,7 +40,7 @@ const error = handleActions(
 
 const records = handleActions( // data
   {
-    [fetchRequest]: (state, action) => null,
+    // [fetchRequest]: (state, action) => null,
     [fetchSuccess]: (state, action) => action.payload
   },
   null

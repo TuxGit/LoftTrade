@@ -133,9 +133,9 @@ export const getCurrentCurrencyData = state => {
 
 export const getCurrentCurrencyPurchase = state => {
   const selected = state.currency.selected;
-  return (state.currency[selected].length > 0) ? state.currency[selected][0].purchase : null;
+  return (state.currency[selected].length > 0) ? state.currency[selected][0].purchase : 0; // null
 };
 export const getCurrentCurrencySell = state => {
   const selected = state.currency.selected;
-  return (state.currency[selected].length > 0) ? state.currency[selected][0].sell : null;
+  return (state.currency[selected].length > 0) ? state.currency[selected][0].sell : 0; // null
 };
