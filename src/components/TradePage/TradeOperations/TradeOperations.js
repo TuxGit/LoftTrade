@@ -80,7 +80,7 @@ class TradeOperations extends PureComponent {
     this.props.sellCurrencyRequest({selectedCurrency, value: inputFiat});
   };
 
-  handleBuy = event => {
+  handleBuy = () => {
     const {selectedCurrency} = this.props;
     const {inputFiat} = this.state;
     this.props.buyCurrencyRequest({selectedCurrency, value: inputFiat});
@@ -127,14 +127,10 @@ class TradeOperations extends PureComponent {
     const {error, selectedCurrency} = this.props;
     const {inputFiat, inputSell, inputPurchase} = this.state;
 
-    // Warning: `value` prop on `input` should not be null. Consider using an empty string to clear the component or `undefined` for uncontrolled components.
-    // if (!inputFiat || !inputSell || !inputPurchase) { return null; }
-
     return (
       <Container>
         <h2>Покупка/продажа</h2>
         <InputWrapper>
-          {/* value={inputFiat || ''} */}
           <Input
             onChange={this.handleChange}
             onFocus={this.handleFocus}

@@ -28,17 +28,14 @@ export function* loginWatch () {
 
 export function* loginFlow (action) {
   let token = null;
-  // console.log('action', action);
   try {
     const response = yield call(login, action.payload);
-    // console.log('resp', response);
     token = response.data.jwt;
     yield put(loginSuccess());
 
     yield call(setTokenApi, token);
     yield call(setTokenToLocalStorage, token);
   } catch (error) {
-    // console.log('error', error);
     yield put(loginFailure(error));
   }
 }
@@ -49,17 +46,14 @@ export function* registerWatch () {
 
 export function* registerFlow (action) {
   let token = null;
-  // console.log('action', action);
   try {
     const response = yield call(registration, action.payload);
-    // console.log('resp', response);
     token = response.data.jwt;
     yield put(registrationSuccess());
 
     yield call(setTokenApi, token);
     yield call(setTokenToLocalStorage, token);
   } catch (error) {
-    // console.log('error', error);
     yield put(registrationFailure(error));
   }
 }

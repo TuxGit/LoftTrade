@@ -1,12 +1,12 @@
 import React, { PureComponent } from 'react';
 import { connect } from 'react-redux';
-import { NavLink } from 'react-router-dom'; // withRouter
+import { NavLink } from 'react-router-dom';
 
 import { selectBtc, selectEth } from '../../ducks/currency';
 import LogoWhiteSvg from './Logo-white.svg';
 import { Container, Content, Logo, Menu, MenuItem, UserInfo } from './styles';
 
-export class Header extends PureComponent { // PureComponent -> нет реакции на переходы по ссылкам меню (исправилось как то само)
+export class Header extends PureComponent {
   onClickNavLink = param => e => {
     if (param === 'btc') {
       this.props.selectBtc();
@@ -49,7 +49,6 @@ export class Header extends PureComponent { // PureComponent -> нет реак�
   }
 }
 
-// export default withRouter(Header);
 export default connect(
   state => ({ }),
   { selectBtc, selectEth }

@@ -14,11 +14,6 @@ describe('Тестирование #fetchUserWatch', () => {
 
 describe('Тестирование саги #fetchUserFlow', () => {
   describe('without error', () => {
-    // const fnGetUserInfo = ({ email, password }) => {
-    //   return {
-    //     data: { result: {id: 412, email: 'testuser@loft.ru'} }
-    //   };
-    // };
     const getUserResult = {
       data: { result: {id: 42, email: 'test@loft.ru'} }
     };
@@ -29,11 +24,6 @@ describe('Тестирование саги #fetchUserFlow', () => {
     const sagaIterator = fetchUserFlow(action);
 
     it('call fn getUserInfo', () => {
-      // console.log(sagaIterator.next().value);
-      // console.log(call(getUserInfo, action.payload));
-      // console.log(call(fnGetUserInfo, action.payload));
-      // console.log(call(getUserInfo));
-
       expect(sagaIterator.next().value).toEqual(call(getUserInfo, action.payload));
     });
 
@@ -43,9 +33,6 @@ describe('Тестирование саги #fetchUserFlow', () => {
   });
 
   describe('with error', () => {
-    // const getUserResult = {
-    //   data: { result: {id: 42, email: 'test@loft.ru'} }
-    // };
     const action = {
       type: fetchRequest.toString(),
       payload: { email: '', password: '' }
@@ -58,7 +45,6 @@ describe('Тестирование саги #fetchUserFlow', () => {
 
     it('put fetchFailure', () => {
       const error = new Error('test error');
-      // (sagaIterator.next(null).value)
       expect(sagaIterator.throw(error).value).toEqual(put(fetchFailure(error)));
     });
   });
