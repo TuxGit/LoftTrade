@@ -5,7 +5,7 @@ import { registrationRequest, getRegistrationError } from '../../../ducks/auth';
 import Input from '../Input';
 import { Form, Button, ErrorMessage } from './styles';
 
-class RegisterForm extends PureComponent {
+export class RegisterForm extends PureComponent {
   state = {
     email: '',
     password: ''

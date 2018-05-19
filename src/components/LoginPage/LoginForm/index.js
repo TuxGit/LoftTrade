@@ -5,7 +5,7 @@ import { loginRequest, getLoginError } from '../../../ducks/auth';
 import Input from '../Input';
 import { Form, Button, ErrorMessage } from './styles';
 
-class LoginForm extends PureComponent {
+export class LoginForm extends PureComponent {
   state = {
     email: '',
     password: ''
